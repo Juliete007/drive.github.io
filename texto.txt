@@ -1,0 +1,17 @@
+alter table articles
+add constraint fk_articulo_fabricanle foreign key (fabricante_id)
+references fabricante (nif_fab) on delete cascade on update cascade;
+
+update fabricante
+set nif_fab=20
+where nom_fab='Adata';
+
+delete from articles
+where precio >=200 and nom_art='Memoria USB';
+
+delete from fabricante
+where nom_fab='Lexar';
+
+update articles
+set nom_art='Impresora Láser'
+where cod_art = 9;
