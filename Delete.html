@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="ca" xmlns="http://www.w3.org/1999/xhtml" lang="ca"><script>
+    (function() {
+    class RuffleMimeType {
+        constructor(a, b, c) {
+            this.type = a, this.description = b, this.suffixes = c
+        }
+    }
+    class RuffleMimeTypeArray {
+        constructor(a) {
+            this.__mimetypes = [], this.__named_mimetypes = {};
+            for (let b of a) this.install(b)
+        }
+        install(a) {
+            let b = this.__mimetypes.length;
+            this.__mimetypes.push(a), this.__named_mimetypes[a.type] = a, this[a.type] = a, this[b] = a
+        }
+        item(a) {
+            return this.__mimetypes[a]
+        }
+        namedItem(a) {
+            return this.__named_mimetypes[a]
+        }
+        get length() {
+            return this.__mimetypes.length
+        }
+    }
+    class RufflePlugin extends RuffleMimeTypeArray {
+        constructor(a, b, c, d) {
+            super(d), this.name = a, this.description = b, this.filename = c
+        }
+        install(a) {
+            a.enabledPlugin || (a.enabledPlugin = this), super.install(a)
+        }
+    }
+    class RufflePluginArray {
+        constructor(a) {
+            this.__plugins = [], this.__named_plugins = {};
+            for (let b of a) this.install(b)
+        }
+        install(a) {
+            let b = this.__plugins.length;
+            this.__plugins.push(a), this.__named_plugins[a.name] = a, this[a.name] = a, this[b] = a
+        }
+        item(a) {
+            return this.__plugins[a]
+        }
+        namedItem(a) {
+            return this.__named_plugins[a]
+        }
+        get length() {
+            return this.__plugins.length
+        }
+    }
+    const FLASH_PLUGIN = new RufflePlugin("Shockwave Flash", "Shockwave Flash 32.0 r0", "ruffle.js", [new RuffleMimeType("application/futuresplash", "Shockwave Flash", "spl"), new RuffleMimeType("application/x-shockwave-flash", "Shockwave Flash", "swf"), new RuffleMimeType("application/x-shockwave-flash2-preview", "Shockwave Flash", "swf"), new RuffleMimeType("application/vnd.adobe.flash-movie", "Shockwave Flash", "swf")]);
+
+    function install_plugin(a) {
+        navigator.plugins.install || Object.defineProperty(navigator, "plugins", {
+            value: new RufflePluginArray(navigator.plugins),
+            writable: !1
+        }), navigator.plugins.install(a), 0 < a.length && !navigator.mimeTypes.install && Object.defineProperty(navigator, "mimeTypes", {
+            value: new RuffleMimeTypeArray(navigator.mimeTypes),
+            writable: !1
+        });
+        for (var b = 0; b < a.length; b += 1) navigator.mimeTypes.install(a[b])
+    }
+    install_plugin(FLASH_PLUGIN);
+})();
+</script><head>
+<link rel="stylesheet" type="text/css" href="Delete_files/base.css">
+<link rel="stylesheet" type="text/css" href="Delete_files/content.css">
+<link rel="stylesheet" type="text/css" href="Delete_files/nav.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>3.3.2 DELETE | Bases de Dades </title>
+<link rel="shortcut icon" href="https://aules.edu.gva.es/fp/pluginfile.php/3480500/mod_resource/content/14/Tema6-3/favicon.ico" type="image/x-icon">
+<meta http-equiv="content-language" content="ca">
+<meta name="author" content="Àlvar Serrano Calduch">
+<meta name="generator" content="eXeLearning 2.0.4 - exelearning.net">
+<script type="text/javascript" src="Delete_files/exe_jquery.js"></script>
+<script type="text/javascript">$exe_i18n={show:"Mostra",hide:"Amaga",showFeedback:"Mostra realimentació",hideFeedback:"Amaga realimentació",correct:"Correcte",incorrect:"Incorrecte",menu:"Menú"}</script>
+<script type="text/javascript" src="Delete_files/common.js"></script>
+</head>
+<body class="exe-web-site js"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Omet navegació</a></p>
+<div id="header" role="banner">Bases de Dades</div>
+<div id="siteNav" role="navigation">
+<ul>
+   <li><a href="https://aules.edu.gva.es/fp/pluginfile.php/3480500/mod_resource/content/14/Tema6-3/index.html" class="daddy main-node">Tema 6: SQL -  DDL i consultes d'actualització (part III)</a></li>
+   <li><a href="https://aules.edu.gva.es/fp/pluginfile.php/3480500/mod_resource/content/14/Tema6-3/31_introducci.html" class="daddy">3.1 Introducció</a>
+   <ul class="other-section">
+      <li><a href="https://aules.edu.gva.es/fp/pluginfile.php/3480500/mod_resource/content/14/Tema6-3/exercicis1.html" class="no-ch">Exercicis</a></li>
+   </ul>
+   </li>
+   <li><a href="https://aules.edu.gva.es/fp/pluginfile.php/3480500/mod_resource/content/14/Tema6-3/32_ddl.html" class="daddy">3.2 DDL</a>
+   <ul class="other-section">
+      <li><a href="https://aules.edu.gva.es/fp/pluginfile.php/3480500/mod_resource/content/14/Tema6-3/321_tipus_de_dades.html" class="no-ch">3.2.1 Tipus de dades</a></li>
+      <li><a href="https://aules.edu.gva.es/fp/pluginfile.php/3480500/mod_resource/content/14/Tema6-3/322_create_table.html" class="daddy">3.2.2 CREATE TABLE</a>
+      <ul class="other-section">
+         <li><a href="https://aules.edu.gva.es/fp/pluginfile.php/3480500/mod_resource/content/14/Tema6-3/exercicis2.html" class="no-ch">Exercicis</a></li>
+      </ul>
+      </li>
+      <li><a href="https://aules.edu.gva.es/fp/pluginfile.php/3480500/mod_resource/content/14/Tema6-3/323_restriccions_constraint.html" class="daddy">3.2.3 Restriccions (Constraint)</a>
+      <ul class="other-section">
+         <li><a href="https://aules.edu.gva.es/fp/pluginfile.php/3480500/mod_resource/content/14/Tema6-3/exercicis3.html" class="no-ch">Exercicis</a></li>
+      </ul>
+      </li>
+      <li><a href="https://aules.edu.gva.es/fp/pluginfile.php/3480500/mod_resource/content/14/Tema6-3/324_alter_table.html" class="daddy">3.2.4 ALTER TABLE</a>
+      <ul class="other-section">
+         <li><a href="https://aules.edu.gva.es/fp/pluginfile.php/3480500/mod_resource/content/14/Tema6-3/exercicis4.html" class="no-ch">Exercicis</a></li>
+      </ul>
+      </li>
+      <li><a href="https://aules.edu.gva.es/fp/pluginfile.php/3480500/mod_resource/content/14/Tema6-3/325_drop_table.html" class="no-ch">3.2.5 DROP TABLE</a></li>
+      <li><a href="https://aules.edu.gva.es/fp/pluginfile.php/3480500/mod_resource/content/14/Tema6-3/326_ndex.html" class="daddy">3.2.6 Índex</a>
+      <ul class="other-section">
+         <li><a href="https://aules.edu.gva.es/fp/pluginfile.php/3480500/mod_resource/content/14/Tema6-3/exercicis5.html" class="no-ch">Exercicis</a></li>
+      </ul>
+      </li>
+      <li><a href="https://aules.edu.gva.es/fp/pluginfile.php/3480500/mod_resource/content/14/Tema6-3/327_vistes.html" class="daddy">3.2.7 Vistes</a>
+      <ul class="other-section">
+         <li><a href="https://aules.edu.gva.es/fp/pluginfile.php/3480500/mod_resource/content/14/Tema6-3/exercicis6.html" class="no-ch">Exercicis</a></li>
+      </ul>
+      </li>
+      <li><a href="https://aules.edu.gva.es/fp/pluginfile.php/3480500/mod_resource/content/14/Tema6-3/328_creaci_daltres_objectes_seqncies_dominis_i_tipus.html" class="daddy">3.2.8. Creació d'altres objectes: seqüències, dominis i tipus.</a>
+      <ul class="other-section">
+         <li><a href="https://aules.edu.gva.es/fp/pluginfile.php/3480500/mod_resource/content/14/Tema6-3/3281_seqncies.html" class="no-ch">3.2.8.1 Seqüències</a></li>
+         <li><a href="https://aules.edu.gva.es/fp/pluginfile.php/3480500/mod_resource/content/14/Tema6-3/3282_dominis.html" class="no-ch">3.2.8.2 Dominis</a></li>
+         <li><a href="https://aules.edu.gva.es/fp/pluginfile.php/3480500/mod_resource/content/14/Tema6-3/3283_tipus_de_dades.html" class="no-ch">3.2.8.3 Tipus de dades</a></li>
+      </ul>
+      </li>
+   </ul>
+   </li>
+   <li class="sfout"><a href="https://aules.edu.gva.es/fp/pluginfile.php/3480500/mod_resource/content/14/Tema6-3/33_consultes_dactualitzaci.html" class="current-page-parent daddy">3.3 Consultes d'actualització</a>
+   <ul>
+      <li><a href="https://aules.edu.gva.es/fp/pluginfile.php/3480500/mod_resource/content/14/Tema6-3/331_insert.html" class="daddy">3.3.1 INSERT</a>
+      <ul class="other-section">
+         <li><a href="https://aules.edu.gva.es/fp/pluginfile.php/3480500/mod_resource/content/14/Tema6-3/exercicis7.html" class="no-ch">Exercicis</a></li>
+      </ul>
+      </li>
+      <li id="active" class="sfout"><a href="https://aules.edu.gva.es/fp/pluginfile.php/3480500/mod_resource/content/14/Tema6-3/332_delete.html" class="active daddy">3.3.2 DELETE</a>
+      <ul>
+         <li class="sfout"><a href="https://aules.edu.gva.es/fp/pluginfile.php/3480500/mod_resource/content/14/Tema6-3/exercicis8.html" class="no-ch">Exercicis</a></li>
+      </ul>
+      </li>
+      <li><a href="https://aules.edu.gva.es/fp/pluginfile.php/3480500/mod_resource/content/14/Tema6-3/333_update.html" class="daddy">3.3.3 UPDATE</a>
+      <ul class="other-section">
+         <li><a href="https://aules.edu.gva.es/fp/pluginfile.php/3480500/mod_resource/content/14/Tema6-3/exercicis9.html" class="no-ch">Exercicis</a></li>
+      </ul>
+      </li>
+   </ul>
+   </li>
+   <li><a href="https://aules.edu.gva.es/fp/pluginfile.php/3480500/mod_resource/content/14/Tema6-3/exercicis_de_tot_el_tema.html" class="no-ch">Exercicis de tot el tema</a></li>
+</ul>
+</div>
+<div id="topPagination">
+<div class="pagination noprt">
+<a href="https://aules.edu.gva.es/fp/pluginfile.php/3480500/mod_resource/content/14/Tema6-3/exercicis7.html" class="prev"><span>« </span>Anterior</a> | <a href="https://aules.edu.gva.es/fp/pluginfile.php/3480500/mod_resource/content/14/Tema6-3/exercicis8.html" class="next"> Següent<span> »</span></a>
+</div>
+</div>
+<div id="main-wrapper">
+<div id="main" role="main"><a name="main"></a>
+<div id="nodeDecoration"><h1 id="nodeTitle">3.3.2 DELETE</h1></div>
+<div class="iDevice_wrapper FreeTextIdevice" id="id50">
+<p class="toggle-idevice toggle-em0"><a href="#" onclick="$exe.iDeviceToggler.toggle(this,'id50','em0')" title="Amaga"><span>Amaga</span></a></p><div class="iDevice emphasis0">
+<div id="ta50_1" class="block iDevice_content">
+<p>&nbsp;</p>
+<p>Aquesta sentència servirà per <b>esborrar files senceres</b> d'una determinada taula.</p>
+<p>Si es volen esborrar només alguns camps d'una o unes determinades 
+files, no s'ha d'utilitzar aquesta sentència, sinó que s'haurà 
+d'utilitzar la sentència <strong>UPDATE</strong> per a posar els camps a NULL.</p>
+</div>
+</div>
+</div>
+<div class="iDevice_wrapper FreeTextIdevice" id="id66">
+<p class="toggle-idevice toggle-em0"><a href="#" onclick="$exe.iDeviceToggler.toggle(this,'id66','em0')" title="Amaga"><span>Amaga</span></a></p><div class="iDevice emphasis0">
+<div id="ta66_1" class="block iDevice_content">
+<p class="titolet">Sintaxi</p>
+<p class="codiSQL">DELETE FROM taula <br> [WHERE condició]</p>
+<p>S'esborraran les files que acomplesquen la condició. Si no es posa el
+ WHERE s'esborraran tetes les files de la taula (però no la mateixa 
+taula, l'estructura; és a dir, continuarà existint la taula, però 
+buida).</p>
+<p align="justify">Per la perillositat de la sentència, és convenient 
+fer primer una sentència SELECT, i quan estiguem segurs que se 
+seleccionen només les files que volem esborrar, canviar-la per DELETE. 
+També és molt convenient fer còpies de seguretat de les taules o de tota
+ la Base de Dades.</p>
+</div>
+</div>
+</div>
+<div class="iDevice_wrapper FreeTextIdevice" id="id67">
+<p class="toggle-idevice toggle-em0"><a href="#" onclick="$exe.iDeviceToggler.toggle(this,'id67','em0')" title="Amaga"><span>Amaga</span></a></p><div class="iDevice emphasis0">
+<div id="ta67_1" class="block iDevice_content">
+<p class="titolet">Exemples</p>
+<ol>
+<li value="1">
+<p>Esborrar totes les files de <strong>EMPLEAT2</strong></p>
+</li>
+</ol>
+<p class="codiSQL">DELETE FROM EMPLEAT2;</p>
+<ol>
+<li value="2">Esborrar d'<strong>EMPLEAT3</strong> els empleats del departament 7</li>
+</ol>
+<p class="codiSQL">DELETE FROM EMPLEAT3<br> WHERE departament=7;</p>
+<ol>
+<li value="3">
+<p>Esborrar d'<strong>EMPLEAT3</strong> els empleats majors de 47 anys (en realitat no s'esborrarà cap perquè no tenim introduïda la data de naixement)</p>
+</li>
+</ol>
+<p class="codiSQL">DELETE FROM EMPLEAT3<br>WHERE EXTRACT(year FROM AGE(CURRENT_DATE,data_naixement) )&gt;=47;</p>
+<ol>
+<li value="4">
+<p>Esborrar d'EMPLEAT aquells empleats que trebalen en projectes menys 
+de 20 hores (no es molt convenient confirmar l'eliminació dels registres
+ ja que ens quedaríem sense dades importants)</p>
+</li>
+</ol>
+<p class="codiSQL"><span style="color: #ff0000;">DELETE FROM EMPLEAT</span><br><span style="color: #ff0000;"> WHERE dni IN (SELECT dni</span><br><span style="color: #ff0000;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FROM TREBALLA</span><br><span style="color: #ff0000;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GROUP BY dni</span><br><span style="color: #ff0000;">
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ HAVING SUM(hores)&lt;20);</span></p>
+</div>
+</div>
+</div>
+<div id="bottomPagination">
+<div class="pagination noprt">
+<a href="https://aules.edu.gva.es/fp/pluginfile.php/3480500/mod_resource/content/14/Tema6-3/exercicis7.html" class="prev"><span>« </span>Anterior</a> | <a href="https://aules.edu.gva.es/fp/pluginfile.php/3480500/mod_resource/content/14/Tema6-3/exercicis8.html" class="next"> Següent<span> »</span></a>
+</div>
+</div>
+<p align="center">Llicenciat sota la  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Llicència Creative Commons Reconeixement NoComercial CompartirIgual 3.0</a></p></div>
+</div>
+</div>
+</body></html>
